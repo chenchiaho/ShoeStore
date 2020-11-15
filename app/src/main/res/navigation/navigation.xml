@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/login_destination"
         android:name="com.udacity.shoestore.ui.login.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_welcomeFragment"
             app:destination="@id/welcome_destination" />
@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_shoeListFragment_to_shoeDetailFragment"
             app:destination="@id/shoeDetail_destination" />
+        <action
+            android:id="@+id/action_shoeList_destination_to_login_destination"
+            app:destination="@id/login_destination" />
     </fragment>
     <fragment
         android:id="@+id/shoeDetail_destination"

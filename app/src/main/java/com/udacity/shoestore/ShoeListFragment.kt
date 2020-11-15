@@ -1,41 +1,48 @@
 package com.udacity.shoestore
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
-import com.udacity.shoestore.databinding.FragmentInstructionBinding
+import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
 
 class ShoeListFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ShoeListFragment()
-    }
-
-    private lateinit var viewModel: ShoeListViewModel
+    private val shoeViewModel: ShoeViewModel by activityViewModels()
+    lateinit var shoeListBinding: FragmentShoeListBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding : FragmentShoeListBinding = DataBindingUtil.inflate<FragmentShoeListBinding>(
+
+        val binding : FragmentShoeListBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_shoe_list, container, false)
 
         binding.fab.setOnClickListener { v:View ->
             v.findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
         }
+        setHasOptionsMenu(true)
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.logout_menu, menu)
     }
 
-}
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        ShoeViewModel.clearInventory()
+        logOut()
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun logOut() {
+        findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
+    }
+
+    }
+
