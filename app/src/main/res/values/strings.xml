@@ -15,4 +15,5 @@
     <string name="fabDescribe">Add new shoes</string>
     <string name="intrstruction_intro">Organizing\nYour Shoes</string>
     <string name="instruction_body">simply use the add button to enter new shoe details!</string>
+    <string name="buttonStart">Start!</string>
 </resources>
