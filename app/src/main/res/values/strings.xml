@@ -26,4 +26,5 @@
     <string name="shoeDescription">Description</string>
     <string name="buttonSave">Save</string>
     <string name="buttonCancel">Cancel</string>
+    <string name="ok">ok</string>
 </resources>
