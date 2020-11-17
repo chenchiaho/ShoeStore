@@ -62,5 +62,8 @@ class ShoeDetailFragment : Fragment() {
 
         }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        shoeViewModel.finish()
     }
+}

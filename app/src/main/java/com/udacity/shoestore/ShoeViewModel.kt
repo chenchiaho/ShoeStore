@@ -35,9 +35,19 @@ class ShoeViewModel : ViewModel() {
             }
 
         }
+
     }
     fun returnToList() {
         _detailReturnToList.value = true
+    }
+
+    fun finish() {
+        _detailReturnToList.value = false
+        _formIncomplete.value = false
+    }
+
+    fun implementShoe() {
+        shoeItem = Shoe("", "", "","")
     }
 
     fun clearInventory() {
